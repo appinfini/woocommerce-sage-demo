@@ -1,0 +1,23 @@
+{
+  "name": "medical",
+  "version": "1.0.0",
+  "description": "medical built with Tailwindcss",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i  ./src/tailwind.css -o ./public/assets/css/style.css -w",
+    "build-p": "postcss ./src/tailwind.css -o ./public/assets/css/style.css -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.13"
+  },
+  "dependencies": {
+    "@tailwindcss/forms": "^0.4.0",
+    "cssnano": "^5.0.15",
+    "postcss-cli": "^9.1.0"
+  }
+}
