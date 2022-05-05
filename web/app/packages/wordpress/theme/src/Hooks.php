@@ -256,4 +256,42 @@ class Hooks
             )
         );
     }
+
+    /**
+     * Add additional mime types.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function registerWoocommerceShopColumnHook()
+    {
+        add_filter(
+            'loop_shop_columns',
+            array(
+                __NAMESPACE__ . '\\' . 'Actions',
+                'registerWoocommerceShopColumnAction'
+            ),
+            999
+        );
+    }
+
+    /**
+     * Remove woo sections.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function registerWoocommerceRemoveSectionsHook()
+    {
+        add_filter(
+            'init',
+            function () {
+                remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+            }
+        );
+
+        remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+        
+        remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+    }
 }

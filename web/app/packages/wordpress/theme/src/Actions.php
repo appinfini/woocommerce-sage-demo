@@ -296,6 +296,17 @@ class Actions
     }
 
     /**
+     * Register additional mime types.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function registerWoocommerceShopColumnAction($mimes)
+    {
+        return 3;
+    }
+
+    /**
      * Set ajaxurl variable in JS.
      *
      * @since   1.0.0

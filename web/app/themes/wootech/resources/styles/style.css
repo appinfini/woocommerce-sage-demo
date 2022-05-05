@@ -3381,3 +3381,20 @@ label.error {
     padding-top: 3rem;
   }
 }
+
+ul.products li.product a img.w-full {
+  min-height: 230px !important;
+  max-height: 230px !important;
+}
+
+ul.products li.product div.px-6 a h5 {
+  color: #000000 !important;
+}
+
+.bg-blue-700{
+  background-color: #2a6db0;
+}
+
+.single-product div.product .product_meta .posted_in {
+  display: none;
+}

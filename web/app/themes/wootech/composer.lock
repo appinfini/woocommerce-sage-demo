@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "51fc4abd5874c2106212e2ea88e843d8",
+    "content-hash": "aa854c79df261bc4e03a1f2abc330f2b",
     "packages": [
         {
             "name": "brick/math",
@@ -158,56 +158,6 @@
             "time": "2021-10-22T20:16:43+00:00"
         },
         {
-            "name": "generoi/sage-woocommerce",
-            "version": "v1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/generoi/sage-woocommerce.git",
-                "reference": "27bdcfd3eae5560ba3c7e91a501c010ebff39887"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/generoi/sage-woocommerce/zipball/27bdcfd3eae5560ba3c7e91a501c010ebff39887",
-                "reference": "27bdcfd3eae5560ba3c7e91a501c010ebff39887",
-                "shasum": ""
-            },
-            "require": {
-                "roots/acorn": "*"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "~3.0"
-            },
-            "type": "library",
-            "extra": {
-                "acorn": {
-                    "providers": [
-                        "Genero\\Sage\\WooCommerce\\WooCommerceServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Genero\\Sage\\WooCommerce\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oskar Schöldström",
-                    "email": "public@oxy.fi"
-                }
-            ],
-            "homepage": "https://github.com/generoi/sage-woocommerce",
-            "support": {
-                "issues": "https://github.com/generoi/sage-woocommerce/issues",
-                "source": "https://github.com/generoi/sage-woocommerce/tree/v1.0.1"
-            },
-            "time": "2021-10-27T16:20:20+00:00"
-        },
-        {
             "name": "graham-campbell/result-type",
             "version": "v1.0.4",
             "source": {
@@ -268,6 +218,68 @@
                 }
             ],
             "time": "2021-11-21T21:41:47+00:00"
+        },
+        {
+            "name": "hexbit/sage-woocommerce",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smarteist/sage-woocommerce.git",
+                "reference": "f13b55d18c0b9c39176d916bbaac93ca46522f2a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smarteist/sage-woocommerce/zipball/f13b55d18c0b9c39176d916bbaac93ca46522f2a",
+                "reference": "f13b55d18c0b9c39176d916bbaac93ca46522f2a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0",
+                "roots/acorn": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
+            },
+            "type": "library",
+            "extra": {
+                "acorn": {
+                    "providers": [
+                        "Hexbit\\Woocommerce\\Providers\\WooCommerceServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Hexbit\\Woocommerce\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ali Hosseini",
+                    "email": "ali.hosseini.sr@gmail.com",
+                    "homepage": "https://hexbit.dev/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Woocommerce support for sage 10",
+            "homepage": "https://github.com/smarteist/sage-woocommerce",
+            "keywords": [
+                "blade",
+                "hexbit",
+                "sage",
+                "smarteist",
+                "woocommerce",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/smarteist/sage-woocommerce/issues",
+                "source": "https://github.com/smarteist/sage-woocommerce/tree/1.0.5"
+            },
+            "time": "2021-03-03T14:22:02+00:00"
         },
         {
             "name": "illuminate/bus",
@@ -2031,54 +2043,6 @@
                 }
             ],
             "time": "2022-03-27T17:38:07+00:00"
-        },
-        {
-            "name": "roots/sage-woocommerce",
-            "version": "1.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/roots/sage-woocommerce.git",
-                "reference": "f4e790b04481087e952f9cddb172832a5cce3a6c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-woocommerce/zipball/f4e790b04481087e952f9cddb172832a5cce3a6c",
-                "reference": "f4e790b04481087e952f9cddb172832a5cce3a6c",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/woocommerce.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Mejta",
-                    "email": "daniel@mejta.net"
-                }
-            ],
-            "description": "WooCommerce integration for Sage 9",
-            "support": {
-                "issues": "https://github.com/roots/sage-woocommerce/issues",
-                "source": "https://github.com/roots/sage-woocommerce/tree/1.0.5"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/roots",
-                    "type": "github"
-                },
-                {
-                    "url": "https://www.patreon.com/rootsdev",
-                    "type": "patreon"
-                }
-            ],
-            "abandoned": true,
-            "time": "2021-10-27T10:45:51+00:00"
         },
         {
             "name": "roots/support",
