@@ -7,16 +7,17 @@ $layoutConfigurations = AcfFunctions::getAllLayouts();
 @endphp
 
 @extends('layouts.app')
-
-@section('content')
-    @foreach($layoutConfigurations['layouts'] as $key => $layout)
-        @include(
-            'partials.layouts.layout-' . $layout["acf_fc_layout"],
-            [
-                'layout' => $layout,
-                'meta' => $layoutConfigurations['meta'],
-                'order' => $key
-            ]
-        )
-    @endforeach
-@endsection
+<main class="main {{ is_front_page() ? 'bg-main-home md:pt-24 lg:pt-48' : '' }}">
+    @section('content')
+        @foreach($layoutConfigurations['layouts'] as $key => $layout)
+            @include(
+                'sections.acf-' . $layout["acf_fc_template"],
+                [
+                    'layout' => $layout,
+                    'meta' => $layoutConfigurations['meta'],
+                    'order' => $key
+                ]
+            )
+        @endforeach
+    @endsection
+</main><!-- /.main -->

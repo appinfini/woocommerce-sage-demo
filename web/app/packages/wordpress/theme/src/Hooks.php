@@ -240,4 +240,20 @@ class Hooks
         );
     }
 
+    /**
+     * Add additional mime types.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function registerMimeTypeHook()
+    {
+        add_filter(
+            'upload_mimes',
+            array(
+                __NAMESPACE__ . '\\' . 'Actions',
+                'registerMimeTypeAction'
+            )
+        );
+    }
 }

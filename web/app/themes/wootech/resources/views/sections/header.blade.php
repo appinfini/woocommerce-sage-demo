@@ -6,8 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta name="format-detection" content="telephone=no">
 	<title>{{ bloginfo('name') }}</title>
-  <link rel="icon" type="image/svg+xml" sizes="16x16" href="assets/images/favicon.ico">
-  @php wp_head() @endphp
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="@asset('images/favicon.ico')">
+    @php wp_head() @endphp
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
@@ -85,7 +85,7 @@
 						<a href="#"
 							class="block py-1 px-4 md:p-0 md:hover:bg-transparent text-blue-100 transition-colors duration-200 transform md:border-b-2 md:border-blue-100 md:hover:border-blue-100">PHYSICIANS</a>
 						<div
-							class="submenu pb-6 md:absolute z-40 md:top-full md:left-0 md:right-0 w-full md:py-4 md:bg-gradient-to-r from-[#1f557a] to-[#638ba0]">
+							class="{{ is_front_page() ? 'submenu' : 'md:hidden' }} pb-6 md:absolute z-40 md:top-full md:left-0 md:right-0 w-full md:py-4 md:bg-gradient-to-r from-[#1f557a] to-[#638ba0]">
 							<div class="md:container md:px-4 px-0">
 								<ul
 									class="list-none md:flex md:flex-row md:justify-center md:space-x-4 lg:space-x-8 font-medium text-[13px]">

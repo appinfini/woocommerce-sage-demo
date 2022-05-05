@@ -1,9 +1,9 @@
-<a class="sr-only focus:not-sr-only" href="#main">
-  {{ __('Skip to content') }}
-</a>
-
 @include('sections.header')
 
-  @yield('content')
+@if (!is_front_page())
+    @include('sections.breadcrumb')
+@endif
+
+@yield('content')
 
 @include('sections.footer')

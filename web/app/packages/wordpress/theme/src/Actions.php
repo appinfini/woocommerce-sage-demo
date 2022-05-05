@@ -284,6 +284,18 @@ class Actions
     }
 
     /**
+     * Register additional mime types.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function registerMimeTypeAction($mimes)
+    {
+        $mimes['svg'] = 'image/svg+xml';
+        return $mimes;
+    }
+
+    /**
      * Set ajaxurl variable in JS.
      *
      * @since   1.0.0

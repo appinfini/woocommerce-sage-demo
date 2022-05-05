@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg class="ml-4" aria-hidden="true" focusable="false" width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1 35.854V30.52C0.999088 29.1969 1.37473 27.9009 2.08305 26.7833C2.79136 25.6658 3.80308 24.7729 5 24.209L12.846 20.517L13.573 17.554" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34.465 35.857V30.523C34.4659 29.1999 34.0903 27.9039 33.382 26.7864C32.6736 25.6688 31.6619 24.7759 30.465 24.212L22.619 20.52L21.873 17.574" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.411 18.4C24.189 16.781 24.603 13.364 25.011 10.006C25.3706 8.17921 25.1666 6.28625 24.426 4.57801C23.5785 3.08153 22.1912 1.96542 20.548 1.45801C18.7192 0.845945 16.7408 0.845945 14.912 1.45801C13.2687 1.96533 11.8814 3.08146 11.034 4.57801C10.2934 6.28625 10.0894 8.17921 10.449 10.006C10.86 13.363 11.275 16.781 15.049 18.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.854 20.52C12.854 24.006 17.734 27.491 17.734 27.491C17.734 27.491 22.614 24.005 22.614 20.52" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12.853 20.52C8.67 22.611 9.367 27.491 9.367 27.491" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22.613 20.52C26.404 22.02 26.099 27.491 26.099 27.491V30.28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M7.272 35.857H5.185V33.068C5.185 30.001 7.072 27.491 9.372 27.491C11.672 27.491 13.555 30.001 13.555 33.068V35.857H11.459" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M26.099 34.462C27.2538 34.462 28.19 33.5259 28.19 32.371C28.19 31.2162 27.2538 30.28 26.099 30.28C24.9442 30.28 24.008 31.2162 24.008 32.371C24.008 33.5259 24.9442 34.462 26.099 34.462Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

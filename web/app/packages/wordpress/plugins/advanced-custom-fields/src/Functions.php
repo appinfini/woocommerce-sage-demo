@@ -4,6 +4,7 @@ namespace Packages\Wordpress\Plugins\ACF;
 
 // Theme - Functions.
 use Packages\Wordpress\Theme\PostTypes as ThemePostTypes;
+use Packages\Wordpress\Theme\Functions as ThemeFunctions;
 
 class Functions
 {
@@ -18,6 +19,68 @@ class Functions
      */
     public function __construct()
     {
+    }
+
+    /**
+     * Get Page Layouts.
+     *
+     * @return array
+     */
+    public static function getAllLayouts()
+    {
+        global $post;
+
+        // Basics.
+        $preparedContents = [
+            'layouts' => [],
+            'meta' => self::getPostTypeMeta(
+                $post->post_type,
+                $post->ID
+            )
+        ];
+
+        // Is it desired content type?
+        if (in_array($post->post_type, ['page', 'testimonial'])) {
+            $allLayouts = get_field('all_available_sections');
+
+            // Is it a valid array?
+            if (ThemeFunctions::hasValidArrayContents($allLayouts)) {
+
+                // Iterate them.
+                foreach ($allLayouts as $layout) {
+                    $layout['acf_fc_template'] = str_replace('_', '-', $layout['acf_fc_layout']);
+
+                    // Push to $preparedContents.
+                    $preparedContents['layouts'][] = $layout;
+                }
+            }
+        }
+
+        // Push "Latest News" layout.
+        if (is_front_page()) {
+            $preparedContents['layouts'][] = [
+                'acf_fc_layout' => 'news_builder',
+                'acf_fc_template' => 'news-builder',
+                'section_configuration' => []
+            ];
+        }
+
+        // Push "Get in touch" layout.
+        $preparedContents['layouts'][] = [
+            'acf_fc_layout' => 'get_in_touch',
+            'acf_fc_template' => 'get-in-touch',
+            'section_configuration' => []
+        ];
+
+        // Push "Our partners" layout.
+        $preparedContents['layouts'][] = [
+            'acf_fc_layout' => 'our_partners',
+            'acf_fc_template' => 'our-partners',
+            'section_configuration' => get_field('global_template_configurations_partners', 'option')
+        ];
+
+        // Return.
+        return $preparedContents;
     }
 
     /**

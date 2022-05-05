@@ -39,7 +39,9 @@
     }
   },
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^7.4|^8.0",
+    "generoi/sage-woocommerce": "^1.0",
+    "roots/sage-woocommerce": "^1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6"

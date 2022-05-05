@@ -49,8 +49,8 @@ class Actions
 
             acf_add_options_sub_page(
                 array(
-                    'page_title' => 'Website Testimonials',
-                    'menu_title' => 'Website Testimonials',
+                    'page_title' => 'Global Sections',
+                    'menu_title' => 'Global Sections',
                     'parent_slug' => $parent['menu_slug'],
                     'capability' => 'manage_options',
                 )

@@ -96,6 +96,7 @@ class Configurations
         ThemeHooks::addMiscellaneousHooks();
         ThemeHooks::enqueueAssetsHook();
         ThemeHooks::registerAjaxHooks();
+        ThemeHooks::registerMimeTypeHook();
 
         /*
          * ACF hooks.
