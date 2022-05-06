@@ -7,7 +7,6 @@ use Packages\Wordpress\Plugins\ACF\Functions as AcfFunctions;
 use Packages\Wordpress\Plugins\ACF\elements\BasicString;
 use Packages\Wordpress\Theme\Configurations as ThemeConfigurations;
 use Packages\Wordpress\Theme\Functions as ThemeFunctions;
-use Packages\Wordpress\Theme\Apis as ThemeApis;
 
 class Actions
 {
@@ -33,7 +32,6 @@ class Actions
      */
     public static function registerCustomPostTypeHook()
     {
-
         // Basics.
         $menuPositionCounter = 5;
 
@@ -155,49 +153,6 @@ class Actions
     }
 
     /**
-     * Enqueue theme stylesheet.
-     *
-     * @since 1.0.0
-     * @return void
-     */
-    public static function enqueueAssetsHook()
-    {
-        foreach (['script_loader_src', 'style_loader_src'] as $type) {
-            add_action(
-                $type,
-                array(
-                    __NAMESPACE__ . '\\' . 'Functions',
-                    'sslInsecureContentFixUrl'
-                )
-            );
-        }
-
-        // add JavaScript detection of page protocol, and pray!
-        add_action(
-            'wp_print_scripts',
-            array(
-                __NAMESPACE__ . '\\' . 'Actions',
-                'enqueuePrintAssetsHook'
-            )
-        );
-
-        wp_enqueue_script(ThemeApis::$classConfigurations['apis']['postSlackNotificationsListing']['scriptHandler'], get_stylesheet_directory_uri() . '/assets/js/ajax.CustomApis.js', array('jquery'), '', true);
-
-        // localize the script to your domain name, so that you can reference the url to admin-ajax.php file easily
-        wp_localize_script(
-            ThemeApis::$classConfigurations['apis']['postSlackNotificationsListing']['scriptHandler'],
-            'ajaxCustomApis',
-            [
-                'postSlackNotificationsListing' => [
-                    'action' => ThemeApis::$classConfigurations['apis']['postSlackNotificationsListing']['apiKey'],
-                    'url' => admin_url('admin-ajax.php') . '?',
-                ]
-            ]
-        );
-
-    }
-
-    /**
      * Enqueue admin theme stylesheet action.
      *
      * @since   1.0.0
@@ -209,83 +164,6 @@ class Actions
         if (ThemeFunctions::isAdminEditPage() && in_array($post->post_type, ['page'])) {
             wp_enqueue_style('admin-theme-custom-css', get_template_directory_uri() . '/resources/styles/style.css');
         }
-    }
-
-    /**
-     * use JavaScript to force the browser back to HTTPS if the page is loaded via HTTP
-     *
-     * @since 1.0.0
-     * @return void
-     */
-    public static function enqueuePrintAssetsHook()
-    {
-        // If SSL should be enforced?
-        if (ThemeFunctions::shouldEnforceSecureSsl()) {
-        ?>
-            <script>
-                if (document.location.protocol != "https:") {
-                    document.location = document.URL.replace(/^http:/i, "https:");
-                }
-            </script>
-        <?php
-        }
-    }
-
-    /**
-     * Register menu action hook.
-     *
-     * @since   1.0.0
-     * @return  void
-     */
-    public static function registerMenuHook()
-    {
-        register_nav_menu('main-nav-bar', __('Main Navbar'));
-        register_nav_menu('nav-footer', __('Nav Footer'));
-    }
-
-    /**
-     * Remove asset version action hook.
-     *
-     * @param $src string
-     *
-     * @since   1.0.0
-     * @return  mixed
-     *
-     * @return string
-     */
-    public static function removeAssetVersionHook($src)
-    {
-
-        // Do we have "ver" in query params?
-        if (strpos($src, 'ver=')) {
-            $src = remove_query_arg('ver', $src);
-        }
-
-        // Return.
-        return $src;
-    }
-
-    /**
-     * Move yoast block to bottom hook.
-     *
-     * @since   1.0.0
-     *
-     * @return  string
-     */
-    public static function moveYoastSeoBlockToBottomHook()
-    {
-        return 'low';
-    }
-
-    /**
-     * Register yoast locale.
-     *
-     * @since   1.0.0
-     * @return  string
-     */
-    public static function registerYoastLocale()
-    {
-        return 'en_AU';
     }
 
     /**
@@ -378,15 +256,5 @@ class Actions
             var ajaxurl = '<?php echo admin_url('admin-ajax.php'); ?>';
         </script>
     <?php
-    }
-
-    /**
-     * Hide the wordpress content editor on a specific page.
-     * @since   1.0.0
-     * @return  void
-     */
-    public static function hideContentEditor()
-    {
-        remove_post_type_support('page', 'editor');
     }
 }

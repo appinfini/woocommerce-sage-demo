@@ -152,27 +152,4 @@ class DatabaseQueries
             ]
         );
     }
-
-    /**
-     * Return post by ID.
-     *
-     * @param $url string
-     * @param $parameters array
-     *
-     * @since   1.0.0
-     * @return  object | null
-     */
-    public static function getPostById($postId, $parameters = [])
-    {
-        // Basics.
-        $post = null;
-
-        // If we have postId?
-        if ($postId) {
-            $post = get_post($postId);
-        }
-
-        // Return.
-        return $post;
-    }
 }

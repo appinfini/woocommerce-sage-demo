@@ -106,9 +106,7 @@ class Configurations
 
         // Register theme hooks.
         ThemeHooks::addMiscellaneousHooks();
-        // ThemeHooks::enqueueAssetsHook();
         ThemeHooks::enqueueAdminAssetsHook();
-        ThemeHooks::registerAjaxHooks();
         ThemeHooks::registerMimeTypeHook();
 
         /*
@@ -118,7 +116,6 @@ class Configurations
         // Register ACF option pages hook.
         AcfHooks::acfOptionPagesHook();
         AcfHooks::acfRegisterBlockDataHook();
-        // AcfHooks::acfRegisterBlockHook();
 
         /**
          * Woocommerce

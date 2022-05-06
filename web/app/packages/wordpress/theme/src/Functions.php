@@ -1,19 +1,6 @@
 <?php
 namespace Packages\Wordpress\Theme;
 
-// Basics.
-use DateTime;
-
-// ACF Elements.
-use Packages\Wordpress\Plugins\ACF\elements\BasicString as AcfElementBasicString;
-use Packages\Wordpress\Plugins\ACF\Elements as AcfElements;
-
-// Loggers.
-use Packages\Wordpress\Plugins\Logger\Functions as LoggerFunctions;
-
-// Theme Classes.
-use Packages\Wordpress\Theme\DatabaseQueries as ThemeDatabaseQueries;
-
 class Functions
 {
     /**
