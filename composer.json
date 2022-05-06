@@ -56,7 +56,8 @@
     "roots/wp-config": "1.0.0",
     "roots/wp-password-bcrypt": "1.1.0",
     "junaidbhura/advanced-custom-fields-pro": "*",
-    "roots/acorn": "^2.0"
+    "roots/acorn": "^2.0",
+    "unsplash/unsplash": "^3.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6.2",

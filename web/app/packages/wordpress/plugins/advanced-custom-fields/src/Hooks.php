@@ -35,4 +35,46 @@ class Hooks
             AcfActions::registerOptionPages();
         }
     }
+
+    /**
+     * ACF register blocks hook.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function acfRegisterBlockHook()
+    {
+        add_action(
+            'acf/init',
+            array(
+                __NAMESPACE__ . '\\' . 'Actions',
+                'registerBlockAction'
+            )
+        );
+    }
+
+    /**
+     * ACF register block data hook.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function acfRegisterBlockDataHook()
+    {
+        add_filter(
+            'sage/blocks/acf-image-and-content-builder/data',
+            array(
+                __NAMESPACE__ . '\\' . 'Actions',
+                'acfRegisterBlockDataAction'
+            )
+        );
+
+        add_filter(
+            'sage/blocks/acf-header-product-builder/data',
+            array(
+                __NAMESPACE__ . '\\' . 'Actions',
+                'acfRegisterBlockDataAction'
+            )
+        );
+    }
 }

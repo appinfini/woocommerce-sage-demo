@@ -3395,6 +3395,6 @@ ul.products li.product div.px-6 a h5 {
   background-color: #2a6db0;
 }
 
-.single-product div.product .product_meta .posted_in {
+.single-product div.product .product_meta {
   display: none;
 }

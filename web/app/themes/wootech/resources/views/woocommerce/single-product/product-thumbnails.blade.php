@@ -14,6 +14,8 @@
  * @package     WooCommerce\Templates
  * @version     3.5.1
  */
+use Packages\Wordpress\Plugins\ACF\Functions as AcfFunctions;
+use Packages\Wordpress\Theme\Functions as ThemeFunctions;
 
 defined( 'ABSPATH' ) || exit;
 
@@ -22,12 +24,35 @@ if ( ! function_exists( 'wc_get_gallery_image_html' ) ) {
 	return;
 }
 
-global $product;
+global $product, $post;
+
+// Get post meta.
+$sectionPostMeta = AcfFunctions::getPostTypeMeta(
+	$post->post_type,
+	$post->ID
+);
+
+// Get posts.
+$sectionRows = json_decode($sectionPostMeta['section_product_splash_content'], true);
 
 $attachment_ids = $product->get_gallery_image_ids();
 
 if ( $attachment_ids && $product->get_image_id() ) {
 	foreach ( $attachment_ids as $attachment_id ) {
 		echo apply_filters( 'woocommerce_single_product_image_thumbnail_html', wc_get_gallery_image_html( $attachment_id ), $attachment_id ); // phpcs:disable WordPress.XSS.EscapeOutput.OutputNotEscaped
+	}
+}
+
+// Do we have rows?
+if (ThemeFunctions::hasValidArrayContents($sectionRows)) {
+	echo '<br><br>';
+	foreach ($sectionRows as $sectionRow) {
+		echo implode('', [
+			'<div data-thumb="' . $sectionRow['url'] . '" data-thumb-alt="" class="pr-4 woocommerce-product-gallery__image">',
+			'<a href="' . $sectionRow['url'] . '">',
+			'<img width="100" height="100" src="' . $sectionRow['url'] . '" class="" alt="" loading="lazy" title="' . $sectionRow['description'] . '" data-caption="" data-src="' . $sectionRow['url'] . '" data-large_image="' . $sectionRow['url'] . '" data-large_image_width="212" data-large_image_height="173" srcset="' . $sectionRow['url'] . ' 100w" sizes="(max-width: 100px) 100vw, 100px" />',
+			'</a>',
+			'</div>'
+		]);
 	}
 }

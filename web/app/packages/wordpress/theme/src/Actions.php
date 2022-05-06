@@ -3,6 +3,8 @@
 namespace Packages\Wordpress\Theme;
 
 // Basics.
+use Packages\Wordpress\Plugins\ACF\Functions as AcfFunctions;
+use Packages\Wordpress\Plugins\ACF\elements\BasicString;
 use Packages\Wordpress\Theme\Configurations as ThemeConfigurations;
 use Packages\Wordpress\Theme\Functions as ThemeFunctions;
 use Packages\Wordpress\Theme\Apis as ThemeApis;
@@ -203,7 +205,10 @@ class Actions
      */
     public static function enqueueAdminAssetsHook()
     {
-        wp_enqueue_style('admin-css', get_template_directory_uri() . '/assets/css/admin/admin.css');
+        global $post;
+        if (ThemeFunctions::isAdminEditPage() && in_array($post->post_type, ['page'])) {
+            wp_enqueue_style('admin-theme-custom-css', get_template_directory_uri() . '/resources/styles/style.css');
+        }
     }
 
     /**
@@ -304,6 +309,60 @@ class Actions
     public static function registerWoocommerceShopColumnAction($mimes)
     {
         return 3;
+    }
+
+    /**
+     * Register hook when product is aaved.
+     *
+     * @since   1.0.0
+     * @return  void
+     */
+    public static function registerWoocommercePostSaveAction($value, $post_id, $field, $original)
+    {
+        global $post;
+
+        // If it's not the desired filed?
+        if ($field['name'] != 'post_type_based_product_section_product_splash_content') {
+            return $value;
+        }
+
+        // Basics.
+        $preparedPhotos = [];
+
+        // Get post meta.
+        $sectionPostMeta = AcfFunctions::getPostTypeMeta(
+            $post->post_type,
+            $post_id
+        );
+
+        // Do we have the keyword?
+        if (BasicString::hasPreparedElement($sectionPostMeta, 'section_product_splash')) {
+
+            // Init Unspalsh.
+            \Unsplash\HttpClient::init([
+                'applicationId'    => env('UNSPLASH_APPLICATION_ACCESS_KEY'),
+                'secret'    => env('UNSPLASH_APPLICATION_SECRET_KEY'),
+                'callbackUrl'    => 'https://your-application.com/oauth/callback',
+                'utmSource' => 'AppInfini Technologies'
+            ]);
+
+            // Let's get the pics.
+            $rawPhotos = \Unsplash\Search::photos($sectionPostMeta['section_product_splash'], 1, 3, 'landscape');
+
+            // Do we have them?
+            if (isset($rawPhotos[0]) > 0) {
+                for ($i = 0; $i <=2; $i++) {
+                    $preparedPhotos[] = [
+                        'id' => $rawPhotos[$i]['id'],
+                        'description' => $rawPhotos[$i]['id'],
+                        'url' => $rawPhotos[$i]['urls']['thumb'],
+                    ];
+                }
+            }
+        }
+
+        // Return.
+        return json_encode($preparedPhotos);
     }
 
     /**

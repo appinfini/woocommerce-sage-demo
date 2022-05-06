@@ -5,5 +5,8 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('page', [])
+    @while(have_posts()) @php(the_post())
+        @include('partials.content-page')
+    @endwhile
+    @include('sections.acf-section-parser')
 @endsection

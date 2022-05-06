@@ -139,5 +139,6 @@
 	<script src="{{ get_template_directory_uri() }}/resources/scripts/slick.min.js"></script>
 	<script src="{{ get_template_directory_uri() }}/resources/scripts/aos.js"></script>
 	<script src="{{ get_template_directory_uri() }}/resources/scripts/script.js"></script>
+    @php wp_footer() @endphp
 </body>
 </html>

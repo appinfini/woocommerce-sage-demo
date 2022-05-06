@@ -46,6 +46,18 @@ class Configurations
                             'postType' => 'post'
                         ]
                     ],
+                    'product' => [
+                        'args' => [
+                            'dashIcon' => null,
+                            'namePlural' => 'Products',
+                            'nameSingular' => 'Product',
+                            'slug' => 'product'
+                        ],
+                        'meta' => [
+                            'default' => true,
+                            'postType' => 'product'
+                        ]
+                    ],
                     'testimonial' => [
                         'args' => [
                             'dashIcon' => 'dashicons-testimonial',
@@ -95,6 +107,7 @@ class Configurations
         // Register theme hooks.
         ThemeHooks::addMiscellaneousHooks();
         // ThemeHooks::enqueueAssetsHook();
+        ThemeHooks::enqueueAdminAssetsHook();
         ThemeHooks::registerAjaxHooks();
         ThemeHooks::registerMimeTypeHook();
 
@@ -104,6 +117,8 @@ class Configurations
          */
         // Register ACF option pages hook.
         AcfHooks::acfOptionPagesHook();
+        AcfHooks::acfRegisterBlockDataHook();
+        // AcfHooks::acfRegisterBlockHook();
 
         /**
          * Woocommerce
@@ -111,5 +126,6 @@ class Configurations
          */
         ThemeHooks::registerWoocommerceShopColumnHook();
         ThemeHooks::registerWoocommerceRemoveSectionsHook();
+        ThemeHooks::registerWoocommercePostSaveHook();
     }
 }

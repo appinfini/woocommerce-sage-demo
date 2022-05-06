@@ -130,6 +130,30 @@ class DatabaseQueries
     }
 
     /**
+     * Return taxonomy post types.
+     *
+     * @param $postTypes array
+     * @param $queryParameters array
+     * @param $defaultOverrides array
+     * @param $additionalParameters array
+     *
+     * @since   1.0.0
+     * @return  array
+     */
+    public static function getPostProducts($postConfigurations, $queryParameters = [], $defaultOverrides = [], $additionalParameters = [])
+    {
+        return self::getPosts(
+            [
+                'product'
+            ],
+            [
+                'section_set_limit' => true,
+                'section_limit' => 2
+            ]
+        );
+    }
+
+    /**
      * Return post by ID.
      *
      * @param $url string

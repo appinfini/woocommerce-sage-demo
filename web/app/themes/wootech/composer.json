@@ -40,7 +40,8 @@
   },
   "require": {
     "php": "^7.4|^8.0",
-    "hexbit/sage-woocommerce": "^1.0"
+    "hexbit/sage-woocommerce": "^1.0",
+    "mwdelaney/sage-acf-gutenberg-blocks": "^0.7.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6"
