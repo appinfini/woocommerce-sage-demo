@@ -3398,3 +3398,29 @@ ul.products li.product div.px-6 a h5 {
 .single-product div.product .product_meta {
   display: none;
 }
+
+/* Custom override on shop page */
+body.woocommerce-shop.woocommerce ul.products li.product img {
+  min-height: 120px !important;
+  max-height: 120px !important;
+  margin: auto;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 1024px) {
+  body.woocommerce-shop.woocommerce ul.products li.product {
+    width: 48%;
+    max-width: 48%;
+  }
+
+  body.woocommerce-shop.woocommerce ul.products li.product:last-child {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  body.woocommerce-shop.woocommerce ul.products li.product {
+    width: 100%;
+    max-width: 100%;
+  }
+}
